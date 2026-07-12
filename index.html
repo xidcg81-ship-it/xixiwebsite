@@ -3,1822 +3,557 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DCG Media - Influencer Outreach for Fashion Brands</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6L6ZY014LJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6L6ZY014LJ');
+    </script>
+    <title>DCG Media — Fashion Creator Partnerships</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(124, 58, 237, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-        
-        /* Benefits Section Special Spacing */
-        .benefits-section {
-            padding: 140px 0;
-        }
-
-        @media (max-width: 768px) {
-            .benefits-section {
-                padding: 80px 0;
-            }
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.5s ease;
-        }
-
-        .feature-card:hover::before {
-            transform: translateX(100%);
-        }
-
-        :root {
-            --bg: #0a0a0a;
-            --surface: #111111;
-            --text-primary: #ffffff;
-            --text-secondary: #e5e5e5;
-            --text-muted: #cccccc;
-            --accent: #7c3aed;
-            --accent-light: #a78bfa;
-            --accent-glow: rgba(124, 58, 237, 0.4);
-            --border: rgba(255, 255, 255, 0.08);
-            --max-width: 1200px;
-        }
-
-        ::selection {
-            background: var(--accent);
-            color: white;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background: var(--bg);
-            color: var(--text-primary);
-            line-height: 1.6;
-            font-size: 18px;
-            font-weight: 500;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        /* Noise texture */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.03;
-            z-index: 1;
-            pointer-events: none;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-        }
-
-        /* Container */
-        .container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 24px;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            padding: 24px 0;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        nav.scrolled {
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 16px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 900;
-            letter-spacing: -0.02em;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-        }
-
-        .nav-link {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 600;
-            transition: color 0.2s ease;
-        }
-
-        .nav-link:hover {
-            color: var(--accent-light);
-        }
-
-        /* Button Styles */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 14px 28px;
-            font-size: 16px;
-            font-weight: 700;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            cursor: pointer;
-            border: none;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #6d28d9;
-            transform: translateY(-1px);
-            box-shadow: 0 8px 24px var(--accent-glow);
-        }
-
-        .whatsapp-btn:hover {
-            background: #25d366 !important;
-            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4) !important;
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-primary);
-            border: 1px solid var(--border);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .btn-text {
-            color: var(--text-secondary);
-            background: none;
-            padding: 0;
-            text-decoration: underline;
-            text-underline-offset: 4px;
-            text-decoration-thickness: 1px;
-        }
-
-        .btn-text:hover {
-            color: var(--text-primary);
-        }
-
-        /* Language Switch */
-        .lang-switch {
-            background: transparent;
-            border: 1px solid var(--border);
-            color: var(--text-primary);
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .lang-switch:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: var(--accent);
-        }
-
-        .lang-switch.mobile-only {
-            display: none;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            padding: 120px 0 80px;
-        }
-
-        .hero-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: -1;
-        }
-
-        .hero-gradient {
-            position: absolute;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            filter: blur(100px);
-            opacity: 0.3;
-        }
-
-        .hero-content {
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: rgba(124, 58, 237, 0.1);
-            border: 1px solid rgba(124, 58, 237, 0.2);
-            border-radius: 100px;
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--accent-light);
-            margin-bottom: 32px;
-            animation: fadeIn 0.6s ease-out;
-        }
-
-        .hero h1 {
-            font-size: clamp(40px, 6vw, 72px);
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            animation: fadeInUp 0.6s ease-out 0.1s both;
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-light) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-description {
-            font-size: 24px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 48px;
-            font-weight: 500;
-            animation: fadeInUp 0.6s ease-out 0.2s both;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.6s ease-out 0.3s both;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Section Styles */
-        .section {
-            padding: 120px 0;
-            position: relative;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        .section-label {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 16px;
-        }
-
-        .section-title {
-            font-size: clamp(32px, 4vw, 48px);
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            line-height: 1.2;
-            margin-bottom: 24px;
-        }
-
-        .section-description {
-            font-size: 20px;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-            font-weight: 500;
-        }
-
-        /* Feature Cards */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        @media (max-width: 768px) {
-            .benefits-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-        }
-
-        .feature-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 32px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .benefit-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 40px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            text-align: left;
-        }
-
-        .benefit-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(124, 58, 237, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        .benefit-icon {
-            width: 48px;
-            height: 48px;
-            background: rgba(124, 58, 237, 0.1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-            font-size: 24px;
-        }
-
-        .benefit-title {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            letter-spacing: -0.01em;
-            color: var(--text-primary);
-        }
-
-        .benefit-description {
-            color: var(--text-secondary);
-            line-height: 1.7;
-            font-size: 17px;
-            font-weight: 500;
-        }
-
-        .feature-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 32px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(124, 58, 237, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.5s ease;
-        }
-
-        .feature-card:hover::before {
-            transform: translateX(100%);
-        }
-
-        .feature-number {
-            font-size: 48px;
-            font-weight: 900;
-            color: var(--accent);
-            opacity: 0.2;
-            margin-bottom: 16px;
-            line-height: 1;
-        }
-
-        .feature-title {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            letter-spacing: -0.01em;
-        }
-
-        .feature-description {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            font-size: 16px;
-            font-weight: 500;
-        }
-
-        /* Stats */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 48px;
-            padding: 48px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 48px;
-            font-weight: 900;
-            color: var(--accent);
-            letter-spacing: -0.02em;
-            line-height: 1;
-            margin-bottom: 8px;
-        }
-
-        .stat-label {
-            color: var(--text-secondary);
-            font-size: 16px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-weight: 600;
-        }
-
-        /* Process Timeline */
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .timeline-line {
-            position: absolute;
-            left: 24px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--border);
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-left: 72px;
-            padding-bottom: 48px;
-        }
-
-        .timeline-item:last-child {
-            padding-bottom: 0;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: 16px;
-            top: 8px;
-            width: 16px;
-            height: 16px;
-            background: var(--surface);
-            border: 2px solid var(--accent);
-            border-radius: 50%;
-            z-index: 1;
-        }
-
-        .timeline-content {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 24px;
-            transition: all 0.3s ease;
-        }
-
-        .timeline-content:hover {
-            border-color: rgba(124, 58, 237, 0.3);
-            transform: translateX(4px);
-        }
-
-        .timeline-title {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .timeline-description {
-            color: var(--text-secondary);
-            font-size: 16px;
-            font-weight: 500;
-        }
-
-        /* Testimonial */
-        .testimonial {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 48px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .testimonial-quote {
-            font-size: 26px;
-            line-height: 1.5;
-            margin-bottom: 32px;
-            font-weight: 400;
-            letter-spacing: -0.01em;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-        }
-
-        .author-avatar {
-            width: 48px;
-            height: 48px;
-            background: var(--accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 18px;
-            flex-shrink: 0;
-        }
-
-        .author-info {
-            text-align: left;
-        }
-
-        .author-name {
-            font-weight: 700;
-            margin-bottom: 4px;
-            font-size: 18px;
-        }
-
-        .author-title {
-            font-size: 16px;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
-        /* Pricing */
-        .pricing-card {
-            background: var(--surface);
-            border: 2px solid var(--accent);
-            border-radius: 24px;
-            padding: 48px;
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-        }
-
-        .pricing-highlight {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--accent);
-            color: white;
-            padding: 6px 20px;
-            border-radius: 100px;
-            font-size: 14px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .pricing-features {
-            list-style: none;
-            margin: 32px 0;
-        }
-
-        .pricing-features li {
-            padding: 16px 0;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 18px;
-            font-weight: 500;
-        }
-
-        .pricing-features li:last-child {
-            border-bottom: none;
-        }
-
-        .check-icon {
-            width: 20px;
-            height: 20px;
-            background: var(--accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .check-icon::after {
-            content: '✓';
-            color: white;
-            font-size: 12px;
-            font-weight: 700;
-        }
-
-        .barter-section {
-            background: rgba(124, 58, 237, 0.1);
-            border: 1px solid rgba(124, 58, 237, 0.2);
-            border-radius: 16px;
-            padding: 24px;
-            margin: 32px 0;
-        }
-
-        .barter-section h4 {
-            font-size: 20px;
-            margin-bottom: 8px;
-            color: var(--accent-light);
-            font-weight: 700;
-        }
-
-        .barter-section p {
-            font-size: 18px;
-            font-weight: 500;
-        }
-
-        /* FAQ */
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            border-bottom: 1px solid var(--border);
-            padding: 24px 0;
-        }
-
-        .faq-item:last-child {
-            border-bottom: none;
-        }
-
-        .faq-question {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 20px;
-            transition: color 0.2s ease;
-        }
-
-        .faq-question:hover {
-            color: var(--accent);
-        }
-
-        .faq-arrow {
-            font-size: 16px;
-            transition: transform 0.3s ease;
-            color: var(--text-primary);
-        }
-
-        .faq-item.active .faq-arrow {
-            transform: rotate(180deg);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            color: var(--text-secondary);
-            font-size: 16px;
-            font-weight: 500;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 200px;
-            padding-top: 16px;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(167, 139, 250, 0.1) 100%);
-            border: 1px solid rgba(124, 58, 237, 0.2);
-            border-radius: 24px;
-            padding: 80px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 50%);
-            opacity: 0.3;
-            animation: pulse 4s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(0.8); opacity: 0.3; }
-            50% { transform: scale(1); opacity: 0.5; }
-        }
-
-        .cta-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-title {
-            font-size: 44px;
-            font-weight: 800;
-            margin-bottom: 16px;
-            letter-spacing: -0.02em;
-        }
-
-        .cta-description {
-            font-size: 20px;
-            color: var(--text-secondary);
-            margin-bottom: 32px;
-            font-weight: 500;
-        }
-
-        /* Footer */
-        footer {
-            padding: 48px 0;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 24px;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 32px;
-            flex-wrap: wrap;
-        }
-
-        .footer-link {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 600;
-            transition: color 0.2s ease;
-        }
-
-        .footer-link:hover {
-            color: var(--text-primary);
-        }
-
-        .copyright {
-            color: var(--text-muted);
-            font-size: 16px;
-            font-weight: 500;
-        }
-
-        /* Founder Image */
-        .founder-img {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .founder-img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 40px var(--accent-glow);
-        }
-
-        /* Mobile */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .lang-switch.mobile-only {
-                display: block;
-            }
-
-            .nav-container {
-                gap: 16px;
-            }
-
-            .hero h1 {
-                font-size: 40px;
-            }
-
-            .hero-description {
-                font-size: 20px;
-            }
-
-            .section {
-                padding: 80px 0;
-            }
-
-            .section-header {
-                margin-bottom: 48px;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .benefits-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-
-            .cta-section {
-                padding: 48px 24px;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .footer-links {
-                justify-content: center;
-            }
-        }
-
-        @media (min-width: 1200px) {
-            .benefit-card {
-                padding: 48px;
-            }
-            
-            .section {
-                padding: 140px 0;
-            }
-        }
-
-        /* Scroll reveal */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ROI Calculator Styles */
-        .roi-input-section {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 40px;
-            margin-bottom: 40px;
-        }
-
-        .roi-inputs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-        }
-
-        .roi-input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .roi-input-group label {
-            font-weight: 600;
-            font-size: 16px;
-            color: var(--text-primary);
-        }
-
-        .roi-input-group input {
-            padding: 14px 16px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid var(--border);
-            border-radius: 8px;
-            color: var(--text-primary);
-            font-size: 18px;
-            font-weight: 600;
-            transition: all 0.2s ease;
-        }
-
-        .roi-input-group input:focus {
-            outline: none;
-            border-color: var(--accent);
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .input-help {
-            font-size: 14px;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
-        .roi-comparison-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 32px;
-            margin-bottom: 48px;
-        }
-
-        .roi-comparison-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .roi-comparison-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        .roi-diy-card {
-            border-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .roi-dcg-card {
-            background: linear-gradient(135deg, rgba(124, 58, 237, 0.15) 0%, rgba(167, 139, 250, 0.1) 100%);
-            border: 2px solid var(--accent);
-        }
-
-        .roi-dcg-card:hover {
-            border-color: var(--accent-light);
-            box-shadow: 0 20px 40px var(--accent-glow);
-        }
-
-        .roi-card-header {
-            padding: 24px 32px;
-            background: rgba(255, 255, 255, 0.03);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .roi-dcg-card .roi-card-header {
-            background: rgba(124, 58, 237, 0.2);
-            border-bottom: 1px solid rgba(124, 58, 237, 0.3);
-        }
-
-        .roi-card-header h3 {
-            font-size: 20px;
-            font-weight: 700;
-            margin: 0;
-        }
-
-        .roi-card-body {
-            padding: 32px;
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-
-        .roi-metric {
-            padding-bottom: 24px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .roi-metric:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .roi-metric-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-            font-size: 15px;
-            color: var(--text-secondary);
-            font-weight: 600;
-        }
-
-        .roi-metric-value {
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--text-primary);
-        }
-
-        .roi-progress-bar {
-            width: 100%;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 100px;
-            overflow: hidden;
-            margin-top: 8px;
-        }
-
-        .roi-progress-fill {
-            height: 100%;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 100px;
-            transition: width 0.5s ease;
-        }
-
-        .roi-progress-bar-dcg {
-            background: rgba(124, 58, 237, 0.2);
-        }
-
-        .roi-progress-fill-dcg {
-            background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
-        }
-
-        .roi-additional {
-            margin-top: 8px;
-            font-size: 14px;
-            color: var(--accent-light);
-            font-weight: 600;
-        }
-
-        .roi-additional-small {
-            font-size: 14px;
-            color: #fbbf24;
-            font-weight: 600;
-            margin-top: 4px;
-        }
-
-        .roi-metric-label {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .roi-metric-big {
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--text-primary);
-            margin: 0;
-        }
-
-        .roi-metric-small {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-top: 4px;
-            font-weight: 500;
-        }
-
-        .roi-summary-section {
-            background: linear-gradient(135deg, rgba(15, 15, 15, 1) 0%, rgba(20, 20, 20, 1) 100%);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 48px;
-        }
-
-        .roi-summary-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 24px;
-            margin-bottom: 40px;
-        }
-
-        .roi-summary-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 32px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .roi-summary-card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateY(-4px);
-        }
-
-        .roi-summary-icon {
-            font-size: 32px;
-            margin-bottom: 16px;
-        }
-
-        .roi-summary-label {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-bottom: 12px;
-            font-weight: 600;
-        }
-
-        .roi-summary-value {
-            font-size: 40px;
-            font-weight: 900;
-            color: var(--text-primary);
-            margin: 0;
-        }
-
-        .roi-bottom-line {
-            background: rgba(124, 58, 237, 0.1);
-            border: 2px solid rgba(124, 58, 237, 0.3);
-            border-radius: 16px;
-            padding: 32px;
-        }
-
-        .roi-bottom-line-content {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .roi-bottom-line-content p {
-            margin: 0;
-            font-size: 16px;
-            font-weight: 500;
-            line-height: 1.6;
-        }
-
-        @media (max-width: 768px) {
-            .roi-input-section {
-                padding: 24px;
-            }
-
-            .roi-inputs-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .roi-comparison-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .roi-summary-section {
-                padding: 32px 24px;
-            }
-
-            .roi-summary-grid {
-                grid-template-columns: 1fr;
-            }
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg:#FFFFFF;--paper:#FDFCF8;--text:#2B2520;--text-secondary:#6B5F50;--accent:#8B5A2B;--border-light:rgba(43,37,32,0.08);--rule:#D8D3C8}
+        ::selection{background:var(--text);color:var(--paper)}
+        html{scroll-behavior:smooth}
+        body{font-family:'Inter',-apple-system,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+        .serif{font-family:'Cormorant Garamond',Georgia,serif}
+
+        .paper-noise{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:0.06}
+
+        /* ── Nav ── */
+        nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:28px 0;transition:padding .3s}
+        nav.scrolled{padding:18px 0;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+        .nav-inner{max-width:1280px;margin:0 auto;padding:0 60px;display:flex;justify-content:space-between;align-items:center}
+        .nav-logo{font-family:'Inter',-apple-system,system-ui,sans-serif;font-size:13px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--text);text-decoration:none}
+        .nav-links{display:flex;align-items:center;gap:36px}
+        .nav-link{font-family:'Inter',-apple-system,system-ui,sans-serif;font-size:13px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--text-secondary);text-decoration:none;transition:color .2s}
+        .nav-link:hover{color:var(--text)}
+
+        /* ── Page ── */
+        .page{position:relative;min-height:100vh;padding:44px}
+        .page-paper{background:var(--paper);height:100%;min-height:calc(100vh - 88px);display:flex;flex-direction:column;position:relative;overflow:hidden;box-shadow:0 1px 3px rgba(120,110,95,0.04),0 6px 20px rgba(120,110,95,0.04)}
+        .page-inner{padding:100px 100px;flex:1;display:flex;flex-direction:column}
+        .page-corner{position:absolute;bottom:0;right:0;z-index:3;pointer-events:none;filter:drop-shadow(-2px -2px 3px rgba(80,60,40,0.08));opacity:0.65;transition:opacity .3s}
+
+        /* ── Eyebrow ── */
+        .eyebrow{font-family:'Inter',-apple-system,system-ui,sans-serif;font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:40px}
+
+        /* ── Cover — left text + right photo ── */
+        .cover-split{flex:1;display:flex;align-items:center;gap:5%;padding:80px 0}
+        .cover-left{flex:0 0 55%;display:flex;flex-direction:column;justify-content:center}
+        .cover-right{flex:0 0 41%;display:flex;align-items:center;overflow:hidden}
+        .cover-right img{width:100%;max-height:78vh;object-fit:cover;object-position:center 30%;display:block}
+        .cover-issue{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:400;font-size:14px;letter-spacing:.06em;color:#6B5F50;margin-bottom:48px}
+        .cover-headline{font-family:'Cormorant Garamond',Georgia,serif;font-size:64px;font-weight:400;line-height:1.08;letter-spacing:-.02em;margin-bottom:0}
+        .cover-rule{width:60px;height:1px;background:var(--rule);margin:20px 0}
+        .cover-sub{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:400;font-size:26px;color:var(--text-secondary);line-height:1.4}
+
+        /* ── Approach ── */
+        .approach-content{max-width:60%}
+        .approach-lead{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:30px;font-weight:400;line-height:1.4;margin-bottom:20px;color:var(--text)}
+        .approach-divider{width:60px;height:1px;background:var(--rule);margin-bottom:20px}
+        .approach-body{font-family:'Inter',-apple-system,system-ui,sans-serif;font-size:17px;font-weight:400;line-height:1.7;max-width:580px;color:var(--text-secondary)}
+        .approach-body p{margin-bottom:16px}
+        .approach-body p:last-child{margin-bottom:0}
+
+        /* ── Voices ── */
+        .page--voices{min-height:auto}
+        .page--voices .page-paper{min-height:auto}
+        .page--voices .page-inner{padding-top:56px;padding-bottom:56px}
+        .voices-carousel{max-width:680px;margin:0 auto;position:relative}
+        .voices-viewport{position:relative;perspective:1200px;overflow:hidden}
+        .voices-track{display:grid;position:relative;transform-origin:left center;transform-style:preserve-3d;backface-visibility:hidden}
+        .voice-slide{grid-area:1/1;padding:0 16px 20px;opacity:0;pointer-events:none}
+        .voice-slide.active{opacity:1;pointer-events:auto}
+        .voice-quote{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:clamp(18px,1.8vw,23px);font-weight:400;line-height:1.6;margin-bottom:20px;color:#2B2520}
+        .voice-attribution{font-family:'Inter',-apple-system,system-ui,sans-serif;font-size:14px;letter-spacing:.04em;color:var(--text-secondary);line-height:1.6}
+        .voice-attribution strong{display:block;font-weight:600;font-size:15px;color:#2B2520;margin-bottom:2px}
+        .voice-sub{font-weight:400;font-size:14px;color:#6B5F50;margin-top:2px}
+        .voice-quote--zh{font-family:'Inter',-apple-system,system-ui,sans-serif;font-style:normal;font-size:clamp(15px,1.5vw,19px);line-height:1.7}
+
+        .voices-nav{display:flex;align-items:center;justify-content:center;gap:28px;margin-top:24px}
+        .voices-arrow{background:none;border:none;cursor:pointer;font-family:'Cormorant Garamond',Georgia,serif;font-size:28px;color:var(--text-secondary);padding:8px;transition:color .2s;line-height:1}
+        .voices-arrow:hover{color:var(--text)}
+        .voices-dots{display:flex;gap:10px;align-items:center}
+        .voices-dot{width:7px;height:7px;border-radius:50%;border:1px solid var(--text-secondary);background:transparent;cursor:pointer;padding:0;transition:all .2s}
+        .voices-dot.active{background:var(--accent);border-color:var(--accent)}
+
+        /* ── Inquiry — left intro, bottom Q&A ── */
+        .inquiry-top{display:flex;gap:5%;align-items:stretch}
+        .inquiry-left{flex:0 0 50%;display:flex;flex-direction:column;justify-content:center}
+        .inquiry-name{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(32px,3.5vw,48px);font-weight:400;color:#2B2520;margin-bottom:36px}
+        .inquiry-bio{font-family:'Inter',-apple-system,system-ui,sans-serif;font-size:17px;font-weight:400;line-height:1.7;color:var(--text-secondary);max-width:640px}
+        .inquiry-bio p{margin-bottom:16px}
+        .inquiry-bio p:last-child{margin-bottom:0}
+        .btn-begin{display:inline-block;margin-top:40px;font-family:'Cormorant Garamond',Georgia,serif;font-size:16px;font-weight:400;letter-spacing:.04em;color:var(--accent);background:transparent;border:1px solid var(--accent);padding:14px 32px;cursor:pointer;transition:all .2s}
+        .btn-begin:hover{background:var(--accent);color:var(--paper)}
+        .inquiry-routing{margin-top:40px}
+        .routing-q{font-family:'Cormorant Garamond',Georgia,serif;font-style:normal;font-weight:400;font-size:24px;color:#8B5A2B;line-height:1.35;letter-spacing:0}
+
+        .inquiry-right{flex:1;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-end}
+        .inquiry-gallery{position:relative;overflow:hidden;width:100%;max-width:440px;margin-top:-25px;display:flex;flex-direction:column}
+        .inquiry-gallery-track{aspect-ratio:3/4;width:100%;position:relative;display:grid;overflow:hidden;border:1px solid #D8D3C8;padding:8px;background:#FDFCF8}
+        .inquiry-gallery-slide{grid-area:1/1;position:relative;opacity:0;transition:opacity .4s ease;overflow:hidden}
+        .inquiry-gallery-slide.active{opacity:1}
+        .inquiry-gallery-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+        .inquiry-gallery-nav{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:12px}
+        .inquiry-gallery-arrow{background:none;border:none;cursor:pointer;font-family:'Cormorant Garamond',Georgia,serif;font-size:24px;color:var(--text-secondary);padding:4px 8px;transition:color .2s;line-height:1}
+        .inquiry-gallery-arrow:hover{color:var(--text)}
+        .inquiry-gallery-dots{display:flex;gap:8px;align-items:center}
+        .inquiry-gallery-dot{width:7px;height:7px;border-radius:50%;border:1px solid var(--text-secondary);background:transparent;cursor:pointer;padding:0;transition:all .2s}
+        .inquiry-gallery-dot.active{background:var(--accent);border-color:var(--accent)}
+        .inquiry-bottom{margin-top:48px;padding-top:0}
+
+        .form-wrapper{display:none;margin-top:56px;max-width:560px}
+        .form-wrapper.active{display:block}
+        .form-progress-bar{margin-bottom:40px}
+        .form-progress-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+        .form-progress-label{font-family:'Inter',-apple-system,system-ui,sans-serif;font-size:11px;font-weight:500;letter-spacing:.06em;color:var(--text-secondary)}
+        .form-progress-track{width:100%;height:2px;background:var(--rule);border-radius:2px;overflow:hidden}
+        .form-progress-fill{height:100%;background:var(--accent);border-radius:2px;transition:width .4s ease}
+        .form-step{display:none}.form-step.active{display:block}
+        .form-step-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(26px,3.2vw,44px);font-weight:400;line-height:1.2;margin-bottom:44px}
+        .form-group{margin-bottom:28px}
+        .form-group label{display:block;font-family:'Inter',-apple-system,system-ui,sans-serif;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:8px}
+        .form-group input,.form-group textarea{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(43,37,32,0.2);padding:12px 0;font-family:'Inter',sans-serif;font-size:16px;color:var(--text);outline:none;transition:border-color .2s}
+        .form-group input::placeholder,.form-group textarea::placeholder{color:rgba(107,95,80,0.45)}
+        .form-group input:focus,.form-group textarea:focus{border-bottom-color:var(--accent)}
+        .form-group textarea{resize:vertical;min-height:120px;line-height:1.7}
+        .form-disclaimer{font-family:'Inter',-apple-system,system-ui,sans-serif;font-size:11px;color:var(--text-secondary);margin-top:24px;line-height:1.5}
+        .form-error{font-family:'Inter',-apple-system,system-ui,sans-serif;font-size:12px;color:#9B4023;margin-top:8px;display:none}
+        .form-buttons{display:flex;align-items:center;gap:24px;margin-top:28px}
+        .btn-continue{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:.04em;color:var(--text);background:transparent;border:1px solid rgba(43,37,32,0.3);padding:12px 28px;cursor:pointer;transition:all .2s}
+        .btn-continue:hover{border-color:var(--text)}
+        .btn-back{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:.04em;color:var(--text-secondary);background:transparent;border:none;cursor:pointer;padding:12px 0;transition:color .2s}
+        .btn-back:hover{color:var(--text)}
+        .form-thanks{display:none;margin-top:56px}
+        .form-thanks.active{display:block}
+        .form-thanks-text{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(24px,3vw,36px);font-weight:400;line-height:1.4}
+
+        /* Phone */
+        .phone-field{display:flex;align-items:stretch;position:relative}
+        .phone-country-btn{display:flex;align-items:center;gap:6px;background:transparent;border:none;border-bottom:1px solid rgba(43,37,32,0.2);padding:12px 12px 12px 0;cursor:pointer;font-size:15px;color:var(--text);white-space:nowrap;transition:border-color .2s}
+        .phone-country-btn:focus{border-bottom-color:var(--accent);outline:none}
+        .phone-country-btn .arrow{font-size:10px;color:var(--text-secondary)}
+        .phone-input{flex:1;background:transparent;border:none;border-bottom:1px solid rgba(43,37,32,0.2);padding:12px 0;font-family:'Inter',sans-serif;font-size:16px;color:var(--text);outline:none;transition:border-color .2s}
+        .phone-input::placeholder{color:rgba(107,95,80,0.45)}
+        .phone-input:focus{border-bottom-color:var(--accent)}
+        .country-dropdown{display:none;position:absolute;top:100%;left:0;width:300px;max-height:320px;background:var(--paper);border:1px solid var(--border-light);box-shadow:0 8px 24px rgba(0,0,0,0.08);z-index:200;flex-direction:column}
+        .country-dropdown.open{display:flex}
+        .country-search{padding:10px 12px;border:none;border-bottom:1px solid var(--border-light);font-family:'Inter',sans-serif;font-size:13px;color:var(--text);outline:none;background:transparent}
+        .country-search::placeholder{color:rgba(107,95,80,0.45)}
+        .country-list{overflow-y:auto;flex:1;list-style:none}
+        .country-list li{padding:8px 12px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:background .15s}
+        .country-list li:hover{background:rgba(139,90,43,0.06)}
+        .country-list li .c-code{color:var(--text-secondary);margin-left:auto;font-size:12px}
+
+        /* ── Q&A ── */
+        .qa-list{max-width:none}
+        .qa-item{border-bottom:1px solid var(--rule);padding:0}
+        .qa-item:first-child{border-top:1px solid var(--rule)}
+        .qa-question{display:flex;justify-content:space-between;align-items:center;padding:28px 0;cursor:pointer;gap:24px;background:none;border:none;width:100%;text-align:left;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:24px;font-weight:500;color:#3D352B;letter-spacing:.01em;line-height:1.4;transition:color .3s}
+        .qa-question:hover{color:#8B5A2B}
+        .qa-toggle{font-size:20px;color:#8B5A2B;flex-shrink:0;transition:transform .3s;font-weight:300;line-height:1}
+        .qa-item.open .qa-toggle{transform:rotate(45deg)}
+        .qa-answer{max-height:0;overflow:hidden;transition:max-height .3s ease-in-out}
+        .qa-item.open .qa-answer{max-height:300px}
+        .qa-answer-inner{padding:16px 0 24px;font-family:'Inter',-apple-system,system-ui,sans-serif;font-size:16px;font-weight:300;line-height:1.75;color:#6B5F50}
+
+        /* ── Footer ── */
+        footer{padding:32px 48px;display:flex;justify-content:space-between;align-items:center}
+        .footer-brand{font-family:'Cormorant Garamond',Georgia,serif;font-size:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#B5AEA2}
+        .footer-text{font-family:'Inter',-apple-system,system-ui,sans-serif;font-size:13px;letter-spacing:.04em;color:#B5AEA2}
+
+        /* ── Reveal ── */
+        .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+        .reveal.visible{opacity:1;transform:translateY(0)}
+
+        /* ── Mobile ── */
+        .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px}
+        .nav-toggle span{display:block;width:20px;height:1px;background:var(--text);margin:5px 0}
+
+        @media(max-width:900px){
+            .nav-inner{padding:0 24px}
+            .nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg);flex-direction:column;justify-content:center;align-items:center;gap:32px;z-index:99}
+            .nav-links.open{display:flex}
+            .nav-links .nav-link{font-size:14px}
+            .nav-toggle{display:block;position:relative;z-index:101}
+            .page{padding:16px}
+            .page-paper{min-height:calc(100vh - 32px)}
+            .page-inner{padding:48px 24px}
+            .cover-split{flex-direction:column;gap:40px}
+            .cover-left{flex:none;width:100%}
+            .cover-right{flex:none;width:100%;max-height:50vh}
+            .cover-headline{font-size:clamp(36px,9vw,56px)}
+            .cover-sub{font-size:20px}
+            .approach-content{max-width:100%}
+            .approach-lead{font-size:24px}
+            .page--voices .page-inner{padding-top:40px;padding-bottom:40px}
+            .inquiry-top{flex-direction:column;gap:40px}
+            .inquiry-left{flex:none;width:100%}
+            .inquiry-right{flex:none;width:100%}
+            .inquiry-gallery{height:100%;margin-top:0}
+            .inquiry-gallery-slide{position:static}
+            .inquiry-gallery-slide img{position:static}
+            .form-step,.form-thanks,.form-wrapper{max-width:100%}
+            .country-dropdown{width:100%}
+            .voice-slide{padding:0 8px}
+            .page-corner{width:40px;height:40px}
+        }
+        @media(max-width:480px){
+            .cover-headline{font-size:34px}
+            .cover-sub{font-size:18px}
+            .approach-lead{font-size:22px}
+            .voice-quote{font-size:16px}
+            .page-corner{width:32px;height:32px}
+            .qa-question{font-size:19px}
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="container">
-            <div class="nav-container">
-                <div class="logo">DCG Media</div>
-                <button class="lang-switch mobile-only" onclick="toggleLanguage()">中文</button>
-                <div class="nav-links">
-                    <a href="#services" class="nav-link" data-en="Services" data-cn="服务">Services</a>
-                    <a href="roi-calculator.html" class="nav-link" data-en="ROI Calculator" data-cn="投资回报计算器">ROI Calculator</a>
-                    <a href="#process" class="nav-link" data-en="Process" data-cn="流程">Process</a>
-                    <a href="#testimonial" class="nav-link" data-en="Results" data-cn="成果">Results</a>
-                    <a href="#pricing" class="nav-link" data-en="Pricing" data-cn="定价">Pricing</a>
-                    <button class="lang-switch" onclick="toggleLanguage()">中文</button>
+
+<svg style="position:absolute;width:0;height:0" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <filter id="noise">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/>
+            <feColorMatrix values="0 0 0 0 0.4  0 0 0 0 0.3  0 0 0 0 0.2  0 0 0 0.5 0"/>
+        </filter>
+        <linearGradient id="corner-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FDFCF8"/>
+            <stop offset="40%" stop-color="#EDE8DE"/>
+            <stop offset="70%" stop-color="#E2DCD0"/>
+            <stop offset="100%" stop-color="#C8C2B4"/>
+        </linearGradient>
+        <linearGradient id="corner-shadow-grad" x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="rgba(80,60,40,0.05)"/>
+            <stop offset="100%" stop-color="rgba(80,60,40,0)"/>
+        </linearGradient>
+    </defs>
+</svg>
+
+<!-- Nav -->
+<nav id="navbar">
+    <div class="nav-inner">
+        <a href="#" class="nav-logo">DCG Media</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span></button>
+        <div class="nav-links" id="navLinks">
+            <a href="#approach" class="nav-link">Approach</a>
+            <a href="#voices" class="nav-link">Voices</a>
+            <a href="#inquiry" class="nav-link">Inquiry</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Cover -->
+<div class="page">
+    <div class="page-paper">
+        <svg class="paper-noise" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" filter="url(#noise)"/></svg>
+        <div class="page-inner" style="padding-top:0;padding-bottom:0">
+            <div class="cover-split">
+                <div class="cover-left">
+                    <p class="cover-issue">Issue No. 01 · 2026</p>
+                    <h1 class="cover-headline">Fashion-only<br>creator partnerships.</h1>
+                    <div class="cover-rule"></div>
+                    <p class="cover-sub">Built for founders who think long-term.</p>
+                </div>
+                <div class="cover-right">
+                    <img src="IMG_9683.JPG" alt="Xixi Qin">
                 </div>
             </div>
         </div>
-    </nav>
+    </div>
+</div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-background">
-            <div class="hero-gradient"></div>
-        </div>
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <span>🚀</span>
-                    <span data-en="Pay After Posting • No Retainers" data-cn="发文后付费 • 无预付款">Pay After Posting • No Retainers</span>
-                </div>
-                <h1 data-en="Influencer Outreach for <span class='gradient-text'>Fashion Brands</span>" data-cn="时尚品牌的<span class='gradient-text'>网红推广</span>">Influencer Outreach for <span class="gradient-text">Fashion Brands</span></h1>
-                <p class="hero-description" data-en="We handle your influencer partnerships from first contact to posted content. Only pay for secured collaborations." data-cn="我们处理您的网红合作从初次联系到内容发布的全过程。只为成功达成的合作付费。">
-                    We handle your influencer partnerships from first contact to posted content.
-                    Only pay for secured collaborations.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#process" class="btn btn-secondary" data-en="See Our Process" data-cn="查看我们的流程">See Our Process</a>
+<!-- 01 — Approach -->
+<div class="page page--approach">
+    <div class="page-paper" style="min-height:calc(88vh - 88px)">
+        <svg class="paper-noise" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" filter="url(#noise)"/></svg>
+        <section id="approach" class="page-inner reveal">
+            <p class="eyebrow">01 — Approach</p>
+            <div class="approach-content">
+                <p class="approach-lead">I work with founders as part of the team - not from the outside.</p>
+                <div class="approach-divider"></div>
+                <div class="approach-body">
+                    <p>I think about your brand the way a founder would - its long-term position, not just the next campaign.</p>
+                    <p>I'm here to make your life easier - build the creator engine and keep it running, so you can step back and focus on the bigger picture, where you should be anyway.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+        <svg class="page-corner" width="44" height="44" viewBox="0 0 48 48"><path d="M48 0 L48 48 L0 48 Q16 44 28 32 Q40 20 48 0Z" fill="url(#corner-grad)"/><path d="M48 0 L48 48 L0 48 Q16 44 28 32 Q40 20 48 0Z" fill="url(#corner-shadow-grad)"/></svg>
+    </div>
+</div>
 
-    <!-- Services Section -->
-    <section id="services" class="section reveal">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-label" data-en="What We Do" data-cn="我们的服务">What We Do</p>
-                <h2 class="section-title" data-en="We Connect Fashion Brands<br>with Influencers" data-cn="连接时尚品牌<br>与网红博主">We Connect Fashion Brands<br>with Influencers</h2>
-                <p class="section-description" data-en="Simple. Transparent. Performance-based." data-cn="简单。透明。基于效果。">
-                    Simple. Transparent. Performance-based.
-                </p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-number">01</div>
-                    <h3 class="feature-title" data-en="Identify the Right Fit" data-cn="精准匹配">Identify the Right Fit</h3>
-                    <p class="feature-description" data-en="We find influencers who match your brand aesthetic and target audience. No spray and pray." data-cn="我们寻找与您品牌美学和目标受众相匹配的网红。精准投放，拒绝盲投。">
-                        We find influencers who match your brand aesthetic and target audience. No spray and pray.
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-number">02</div>
-                    <h3 class="feature-title" data-en="Handle All Outreach" data-cn="全程对接">Handle All Outreach</h3>
-                    <p class="feature-description" data-en="From the first DM to negotiating rates, we manage every interaction. You never chase follow-ups." data-cn="从第一条私信到价格谈判，我们管理每一次互动。您无需追踪跟进。">
-                        From the first DM to negotiating rates, we manage every interaction. You never chase follow-ups.
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-number">03</div>
-                    <h3 class="feature-title" data-en="Manage the Details" data-cn="细节管理">Manage the Details</h3>
-                    <p class="feature-description" data-en="Content briefs, timelines, approvals - we coordinate everything between you and the influencer." data-cn="内容简报、时间线、审批 - 我们协调您与网红之间的一切事务。">
-                        Content briefs, timelines, approvals - we coordinate everything between you and the influencer.
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-number">04</div>
-                    <h3 class="feature-title" data-en="You Pay for Results" data-cn="按效果付费">You Pay for Results</h3>
-                    <p class="feature-description" data-en="Only pay after content is posted. No monthly fees. No minimums." data-cn="只在网红发文后付费。无月费。无最低消费。">
-                        Only pay after content is posted. No monthly fees. No minimums.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Benefits Section -->
-    <section class="section benefits-section reveal">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-label" data-en="Why Work With Us" data-cn="为什么选择我们">Why Work With Us</p>
-                <h2 class="section-title" data-en="Focus on What Matters" data-cn="专注于重要的事">Focus on What Matters</h2>
-                <p class="section-description" data-en="Let us handle the tedious work while you build your brand" data-cn="让我们处理繁琐的工作，您专注于品牌建设">Let us handle the tedious work while you build your brand</p>
-            </div>
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">⏰</div>
-                    <h3 class="benefit-title" data-en="Save 20+ Hours Per Week" data-cn="每周节省20+小时">Save 20+ Hours Per Week</h3>
-                    <p class="benefit-description" data-en="Stop spending hours in Instagram DMs. We handle the outreach while you focus on growing your brand." data-cn="不再花费数小时在Instagram私信中。我们处理推广，您专注于品牌成长。">
-                        Stop spending hours in Instagram DMs. We handle the outreach while you focus on growing your brand.
-                    </p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">💰</div>
-                    <h3 class="benefit-title" data-en="Predictable Investment" data-cn="可预测的投资">Predictable Investment</h3>
-                    <p class="benefit-description" data-en="Know exactly what each influencer partnership costs. Budget with clarity." data-cn="准确了解每个网红合作的成本。清晰地制定预算。">
-                        Know exactly what each influencer partnership costs. Budget with clarity.
-                    </p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">📈</div>
-                    <h3 class="benefit-title" data-en="Higher Response Rates" data-cn="更高的回复率">Higher Response Rates</h3>
-                    <p class="benefit-description" data-en="We've tested thousands of messages. We know what converts influencers from &quot;seen&quot; to &quot;yes.&quot;" data-cn="我们测试了数千条信息。我们知道如何让网红从&ldquo;已读&rdquo;变成&ldquo;同意&rdquo;。">
-                        We've tested thousands of messages. We know what converts influencers from "seen" to "yes."
-                    </p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">🚀</div>
-                    <h3 class="benefit-title" data-en="No Learning Curve" data-cn="无需学习曲线">No Learning Curve</h3>
-                    <p class="benefit-description" data-en="Skip the months of trial and error. I've already made the mistakes personally and refined the process." data-cn="跳过数月的试错。我个人已经犯过错误并完善了流程。">
-                        Skip the months of trial and error. I've already made the mistakes personally and refined the process.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Process Section -->
-    <section id="process" class="section reveal">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-label" data-en="Our Process" data-cn="我们的流程">Our Process</p>
-                <h2 class="section-title" data-en="From Brief to Posted Content<br>in 14 Days" data-cn="14天内<br>从简报到发布内容">From Brief to Posted Content<br>in 14 Days</h2>
-            </div>
-            <div class="timeline">
-                <div class="timeline-line"></div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title" data-en="Day 1-3: Strategy" data-cn="第1-3天：策略">Day 1-3: Strategy</h3>
-                        <p class="timeline-description" data-en="We analyze your brand and identify your target market and matching influencer styles." data-cn="我们分析您的品牌并确定您的目标市场和匹配的网红风格。">
-                            We analyze your brand and identify your target market and matching influencer styles.
-                        </p>
+<!-- 02 — Voices -->
+<div class="page page--voices">
+    <div class="page-paper">
+        <svg class="paper-noise" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" filter="url(#noise)"/></svg>
+        <section id="voices" class="page-inner reveal">
+            <p class="eyebrow">02 — Voices</p>
+            <div class="voices-carousel">
+                <div class="voices-viewport">
+                    <div class="voices-track" id="voicesTrack">
+                        <div class="voice-slide active">
+                            <p class="voice-quote">"Finding a factory capable of high-end specs (like our 500gsm all-over embroidery hoodies) is usually a nightmare. Xixi didn't just find a vendor; she found us a top-tier facility and handled every logistic, from negotiating prices to arranging our drivers and tours when we landed. She's proactive, honest, and actually looks out for your best interest rather than just trying to close a deal. If you need someone on the ground who gets it, you're in good hands."</p>
+                            <div class="voice-attribution">
+                                <strong>Daniel</strong>
+                                Owner, Project Orochi
+                                <div class="voice-sub">Fashion brand with 70,000+ customers, $1M+ revenue</div>
+                            </div>
+                        </div>
+                        <div class="voice-slide">
+                            <p class="voice-quote">"Before working with DCG Media, I was spending 3 hours daily in DMs with a 5% response rate. They secured 12 influencers in 30 days, and I only paid after content was posted. Game changer for our launch."</p>
+                            <div class="voice-attribution">
+                                <strong>Jimmy Parker</strong>
+                                Co-founder, AURA
+                            </div>
+                        </div>
+                        <div class="voice-slide">
+                            <p class="voice-quote voice-quote--zh">"刚签完长期合同，合作得很顺利。"</p>
+                            <div class="voice-attribution">
+                                <strong>Yancey</strong>
+                                Co-founder, UNRESTRAIN
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title" data-en="Day 4-10: Outreach" data-cn="第4-10天：推广">Day 4-10: Outreach</h3>
-                        <p class="timeline-description" data-en="Personalized messages sent to pre-vetted influencers. Average response rate: 50%+." data-cn="向预审网红发送个性化信息。平均回复率：50%以上。">
-                            Personalized messages sent to pre-vetted influencers. Average response rate: 50%+.
-                        </p>
+                <div class="voices-nav">
+                    <button class="voices-arrow" id="voicesPrev" aria-label="Previous">‹</button>
+                    <div class="voices-dots" id="voicesDots">
+                        <button class="voices-dot active" data-i="0"></button>
+                        <button class="voices-dot" data-i="1"></button>
+                        <button class="voices-dot" data-i="2"></button>
+                    </div>
+                    <button class="voices-arrow" id="voicesNext" aria-label="Next">›</button>
+                </div>
+            </div>
+        </section>
+        <svg class="page-corner" width="44" height="44" viewBox="0 0 48 48"><path d="M48 0 L48 48 L0 48 Q16 44 28 32 Q40 20 48 0Z" fill="url(#corner-grad)"/><path d="M48 0 L48 48 L0 48 Q16 44 28 32 Q40 20 48 0Z" fill="url(#corner-shadow-grad)"/></svg>
+    </div>
+</div>
+
+<!-- 03 — Inquiry -->
+<div class="page">
+    <div class="page-paper">
+        <svg class="paper-noise" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" filter="url(#noise)"/></svg>
+        <section id="inquiry" class="page-inner reveal">
+            <p class="eyebrow">03 — Inquiry</p>
+
+            <div class="inquiry-top" id="inquiryIntro">
+                <div class="inquiry-left">
+                    <h2 class="inquiry-name">Xixi Qin</h2>
+                    <div class="inquiry-bio">
+                        <p>5 years in fashion creator partnerships. 1,000+ collaborations. 10,000+ creator outreach messages sent.</p>
+                        <p>I work with founders on both sides of growth - from market strategy to the creator partnerships that bring it to life.</p>
+                    </div>
+                    <button class="btn-begin" id="btnBegin">Begin Inquiry →</button>
+                    <div class="inquiry-bio inquiry-routing">
+                        <p><span class="routing-q">Building your first creator program?</span><br>I'll set up the whole system from scratch, sourcing to delivery.</p>
+                        <p><span class="routing-q">Already running ads but short on creator content?</span><br>You have the growth team. I build the creator content pipeline that feeds it.</p>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title" data-en="Day 11-14: Coordination" data-cn="第11-14天：协调">Day 11-14: Coordination</h3>
-                        <p class="timeline-description" data-en="We handle negotiations and content briefs. You approve, they create." data-cn="我们处理谈判和内容简报。您批准，他们创作。">
-                            We handle negotiations and content briefs. You approve, they create.
-                        </p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title" data-en="Ongoing: Optimization" data-cn="持续：优化">Ongoing: Optimization</h3>
-                        <p class="timeline-description" data-en="We track what works and continuously optimize for better results." data-cn="我们追踪有效方法并持续优化，获得更好的结果。">
-                            We track what works and continuously optimize for better results.
-                        </p>
+                <div class="inquiry-right">
+                    <div class="inquiry-gallery">
+                        <div class="inquiry-gallery-track">
+                            <div class="inquiry-gallery-slide active"><img src="698.JPG" alt=""></div>
+                            <div class="inquiry-gallery-slide"><img src="IMG_7240. JPG.JPG" alt=""></div>
+                        </div>
+                        <div class="inquiry-gallery-nav">
+                            <button class="inquiry-gallery-arrow" onclick="galleryGo(-1)">‹</button>
+                            <div class="inquiry-gallery-dots">
+                                <button class="inquiry-gallery-dot active" onclick="gallerySet(0)"></button>
+                                <button class="inquiry-gallery-dot" onclick="gallerySet(1)"></button>
+                            </div>
+                            <button class="inquiry-gallery-arrow" onclick="galleryGo(1)">›</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Supplier Sourcing Section -->
-    <section id="sourcing" class="section reveal">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-label" data-en="What We Also Do" data-cn="我们还能帮你">What We Also Do</p>
-                <h2 class="section-title" data-en="Find Reliable Suppliers<br>in China" data-cn="为你对接<br>中国优质供应商">Find Reliable Suppliers<br>in China</h2>
-                <p class="section-description" data-en="We connect fashion brands with vetted Chinese manufacturers. Transparent pricing, no hidden fees." data-cn="我们为时尚品牌对接经过验证的中国工厂。价格透明，无隐藏费用。">
-                    We connect fashion brands with vetted Chinese manufacturers. Transparent pricing, no hidden fees.
-                </p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-number">01</div>
-                    <h3 class="feature-title" data-en="Factory Vetting" data-cn="工厂验证">Factory Vetting</h3>
-                    <p class="feature-description" data-en="We personally verify each supplier. Quality checks, certifications, production capacity - all confirmed before introduction." data-cn="我们亲自验证每个供应商。质量检查、资质认证、产能 - 引荐前全部确认。">
-                        We personally verify each supplier. Quality checks, certifications, production capacity - all confirmed before introduction.
-                    </p>
+            <!-- Form (hidden until Begin clicked) -->
+            <div class="form-wrapper" id="formWrapper">
+                <div class="form-progress-bar">
+                    <div class="form-progress-top">
+                        <span class="form-progress-label" id="progressLabel">Step 1 of 3</span>
+                        <span class="form-progress-label" id="progressPct">33%</span>
+                    </div>
+                    <div class="form-progress-track"><div class="form-progress-fill" id="progressFill" style="width:33%"></div></div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-number">02</div>
-                    <h3 class="feature-title" data-en="Direct Communication" data-cn="直接沟通">Direct Communication</h3>
-                    <p class="feature-description" data-en="We handle language barriers and cultural differences. You communicate, we translate and negotiate." data-cn="我们处理语言障碍和文化差异。您沟通，我们翻译和谈判。">
-                        We handle language barriers and cultural differences. You communicate, we translate and negotiate.
-                    </p>
+                <div class="form-step active" id="step1">
+                    <h3 class="form-step-title">What's your brand?</h3>
+                    <div class="form-group">
+                        <label for="brandUrl">Brand URL *</label>
+                        <input type="url" id="brandUrl" placeholder="https://yourbrand.com" required>
+                    </div>
+                    <p class="form-error" id="brandError">Please enter a valid brand link (e.g. yourbrand.com).</p>
+                    <div class="form-buttons"><button class="btn-continue" onclick="goToStep(2)">Continue →</button></div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-number">03</div>
-                    <h3 class="feature-title" data-en="Sample Coordination" data-cn="样品协调">Sample Coordination</h3>
-                    <p class="feature-description" data-en="From sample requests to shipping logistics, we manage the entire process until you're satisfied." data-cn="从样品请求到物流安排，我们管理整个流程直到您满意。">
-                        From sample requests to shipping logistics, we manage the entire process until you're satisfied.
-                    </p>
+                <div class="form-step" id="step2">
+                    <h3 class="form-step-title">Where do you want to be in 12 months?</h3>
+                    <div class="form-group">
+                        <textarea id="brandVision" placeholder="Revenue, team, lifestyle, anything that matters to you…" rows="5"></textarea>
+                    </div>
+                    <div class="form-buttons">
+                        <button class="btn-back" onclick="goToStep(1)">← Back</button>
+                        <button class="btn-continue" onclick="goToStep(3)">Continue →</button>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-number">04</div>
-                    <h3 class="feature-title" data-en="Transparent Pricing" data-cn="价格透明">Transparent Pricing</h3>
-                    <p class="feature-description" data-en="Simple pricing: deposit to start, fixed project fee. Know your costs upfront." data-cn="简单定价：定金启动，固定项目费。提前知道所有成本。">
-                        Simple pricing: deposit to start, fixed project fee. Know your costs upfront.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Supplier Sourcing Case Study -->
-    <section id="sourcing-results" class="section reveal">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-label" data-en="Client Results" data-cn="客户成果">Client Results</p>
-                <h2 class="section-title" data-en="How Project Orochi Found<br>Their Perfect Factory" data-cn="Project Orochi 如何<br>找到理想的工厂">How Project Orochi Found<br>Their Perfect Factory</h2>
-            </div>
-            <div class="testimonial">
-                <p class="testimonial-quote" data-en="&quot;Finding a factory capable of high-end specs (like our 500gsm all-over embroidery hoodies) is usually a nightmare. Xixi didn't just find a vendor; she found us a top-tier facility and handled every logistic—from negotiating prices to arranging our drivers and tours when we landed. She's proactive, honest, and actually looks out for your best interest rather than just trying to close a deal. If you need someone on the ground who gets it, you're in good hands.&quot;" data-cn="&ldquo;找到一家能做高端规格的工厂（比如我们500克全身刺绣卫衣）通常是噩梦。Xixi不只是找到了供应商；她帮我们找到了顶级工厂，并处理了所有后勤——从价格谈判到我们落地后安排司机和工厂参观。她主动、诚实，真正为你的利益着想，而不是只想成交。如果你需要一个懂行的人在中国帮你，你找对人了。&rdquo;">
-                    "Finding a factory capable of high-end specs (like our 500gsm all-over embroidery hoodies) is usually a nightmare. Xixi didn't just find a vendor; she found us a top-tier facility and handled every logistic—from negotiating prices to arranging our drivers and tours when we landed. She's proactive, honest, and actually looks out for your best interest rather than just trying to close a deal. If you need someone on the ground who gets it, you're in good hands."
-                </p>
-                <div class="testimonial-author">
-                    <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 20px; flex-shrink: 0;">D</div>
-                    <div class="author-info">
-                        <div class="author-name">Daniel</div>
-                        <div class="author-title" data-en="Owner, Project Orochi — Fashion brand with 70,000+ customers, $1M+ revenue" data-cn="Project Orochi 创始人 — 时尚品牌，70,000+客户，营收超$100万">Owner, Project Orochi — Fashion brand with 70,000+ customers, $1M+ revenue</div>
+                <div class="form-step" id="step3">
+                    <h3 class="form-step-title">What's the best way to reach you?</h3>
+                    <div class="form-group">
+                        <label for="contactName">Name</label>
+                        <input type="text" id="contactName" placeholder="Your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Email</label>
+                        <input type="email" id="contactEmail" placeholder="you@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <div class="phone-field" id="phoneField">
+                            <button type="button" class="phone-country-btn" id="phoneCountryBtn">
+                                <span id="phoneFlag">🇮🇹</span><span id="phoneCode">+39</span><span class="arrow">▾</span>
+                            </button>
+                            <input type="tel" class="phone-input" id="contactPhone" placeholder="Phone number">
+                            <div class="country-dropdown" id="countryDropdown">
+                                <input type="text" class="country-search" id="countrySearch" placeholder="Search country...">
+                                <ul class="country-list" id="countryList"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="form-disclaimer">By submitting, you agree to be contacted about DCG Media regarding your inquiry.</p>
+                    <p class="form-error" id="contactError">Please provide at least one contact method.</p>
+                    <div class="form-buttons">
+                        <button class="btn-back" onclick="goToStep(2)">← Back</button>
+                        <button class="btn-continue" onclick="submitForm()">Submit Inquiry</button>
                     </div>
                 </div>
             </div>
-            <div class="stats-grid" style="margin-top: 48px;">
-                <div class="stat">
-                    <div class="stat-number">500gsm</div>
-                    <div class="stat-label" data-en="Heavy Fabric Specs" data-cn="重磅面料规格">Heavy Fabric Specs</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">Top-tier</div>
-                    <div class="stat-label" data-en="Factory Quality" data-cn="工厂品质">Factory Quality</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">Full</div>
-                    <div class="stat-label" data-en="Logistics Support" data-cn="全程物流支持">Logistics Support</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">70K+</div>
-                    <div class="stat-label" data-en="Brand Customers" data-cn="品牌客户数">Brand Customers</div>
-                </div>
+            <div class="form-thanks" id="formThanks">
+                <p class="form-thanks-text">Thank you.<br>I'll be in touch within 48 hours.</p>
             </div>
-        </div>
-    </section>
 
-    <!-- Supplier Sourcing Pricing -->
-    <section id="sourcing-pricing" class="section reveal">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-label" data-en="Sourcing Pricing" data-cn="寻源定价">Sourcing Pricing</p>
-                <h2 class="section-title" data-en="How Pricing Works" data-cn="定价方式">How Pricing Works</h2>
-            </div>
-            <div class="pricing-card">
-                <div class="pricing-highlight" data-en="Deposit + Project Fee" data-cn="定金 + 项目费">Deposit + Project Fee</div>
-                <h3 style="font-size: 28px; margin-bottom: 16px;" data-en="Clear, Upfront Pricing" data-cn="价格清晰透明">Clear, Upfront Pricing</h3>
-                <p style="color: var(--text-secondary); margin-bottom: 32px; font-size: 18px; font-weight: 500;" data-en="No surprises, no hidden costs. All fees discussed before we begin." data-cn="无意外，无隐藏费用。开始前讨论所有费用。">
-                    No surprises, no hidden costs. All fees discussed before we begin.
-                </p>
-                <ul class="pricing-features">
-                    <li>
-                        <div class="check-icon"></div>
-                        <span data-en="Deposit to start the search" data-cn="定金启动搜索">Deposit to start the search</span>
-                    </li>
-                    <li>
-                        <div class="check-icon"></div>
-                        <span data-en="Fixed project fee upon delivery" data-cn="交付后支付固定项目费">Fixed project fee upon delivery</span>
-                    </li>
-                    <li>
-                        <div class="check-icon"></div>
-                        <span data-en="All costs discussed before we begin" data-cn="开始前讨论所有费用">All costs discussed before we begin</span>
-                    </li>
-                </ul>
-                <p style="color: var(--text-muted); font-size: 16px; margin-bottom: 32px; font-weight: 500;" data-en="Typical projects: 2-4 weeks from brief to verified suppliers." data-cn="典型项目：从简报到验证供应商需2-4周。">
-                    Typical projects: 2-4 weeks from brief to verified suppliers.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonial Section -->
-    <section id="testimonial" class="section reveal">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-label" data-en="Case Study" data-cn="案例研究">Case Study</p>
-                <h2 class="section-title" data-en="How AURA Secured 12 Influencers<br>in Their First Month" data-cn="AURA如何在第一个月<br>获得12位网红合作">How AURA Secured 12 Influencers<br>in Their First Month</h2>
-            </div>
-            <div class="testimonial">
-                <p class="testimonial-quote" data-en="&quot;Before working with DCG Media, I was spending 3 hours daily in DMs with a 5% response rate. They secured 12 influencers in 30 days, and I only paid after content was posted. Game changer for our launch.&quot;" data-cn="&ldquo;在与DCG Media合作之前，我每天花3小时发私信，回复率只有5%。他们在30天内获得了12位网红，我只在内容发布后付费。这对我们的发布来说是游戏规则的改变。&rdquo;">
-                    "Before working with DCG Media, I was spending 3 hours daily in DMs with a 5% response rate. They secured 12 influencers in 30 days, and I only paid after content was posted. Game changer for our launch."
-                </p>
-                <div class="testimonial-author">
-                    <img src="https://i.imgur.com/sDAEhJc.png" alt="Jimmy Parker" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover; flex-shrink: 0;">
-                    <div class="author-info">
-                        <div class="author-name">Jimmy Parker</div>
-                        <div class="author-title" data-en="CoFounder at European Jewelry Brand - AURA" data-cn="欧洲珠宝品牌AURA联合创始人">CoFounder at European Jewelry Brand - AURA</div>
+            <!-- Bottom: Q&A -->
+            <div class="inquiry-bottom">
+                <div class="qa-list">
+                    <div class="qa-item">
+                        <button class="qa-question" onclick="toggleQA(this)">Do you only work with fashion?<span class="qa-toggle">+</span></button>
+                        <div class="qa-answer"><div class="qa-answer-inner">Fashion is where I've spent 5 years and where my judgment is strongest - menswear, womenswear, jewelry, quiet luxury, streetwear. I've also helped brands source production in China when they needed someone they trust on the ground. I don't take on categories I can't add real value to. If it's not fashion or closely adjacent, I'll tell you upfront.</div></div>
+                    </div>
+                    <div class="qa-item">
+                        <button class="qa-question" onclick="toggleQA(this)">What does working together actually look like?<span class="qa-toggle">+</span></button>
+                        <div class="qa-answer"><div class="qa-answer-inner">It depends on what your brand needs right now. The work ranges from market strategy to managing creator partnerships end to end. You'll receive completed collaborations and ready-to-use creator content, not just a list of creator names to contact.</div></div>
+                    </div>
+                    <div class="qa-item">
+                        <button class="qa-question" onclick="toggleQA(this)">How long will it take to see results?<span class="qa-toggle">+</span></button>
+                        <div class="qa-answer"><div class="qa-answer-inner">Creator partnerships typically show traction within 30 to 60 days. Market strategy takes longer - building the right positioning and the right channels is a season-by-season process, not a one-week sprint. I'd rather set honest timelines than overpromise.</div></div>
+                    </div>
+                    <div class="qa-item">
+                        <button class="qa-question" onclick="toggleQA(this)">What makes you different from an agency?<span class="qa-toggle">+</span></button>
+                        <div class="qa-answer"><div class="qa-answer-inner">Most agencies assign you an account manager. I work with you directly - no layers, no handoffs. Every plan is built around your brand's actual position, not pulled from a template that worked for someone else. I only take on a few brands each season, so none of them get half the attention.</div></div>
+                    </div>
+                    <div class="qa-item">
+                        <button class="qa-question" onclick="toggleQA(this)">How does the inquiry process work?<span class="qa-toggle">+</span></button>
+                        <div class="qa-answer"><div class="qa-answer-inner">You fill out a short form. It takes just a few minutes. I personally review every submission within 48 hours. If your brand's vision and aesthetic align, I'll reach out to confirm the details and answer any remaining questions.</div></div>
                     </div>
                 </div>
             </div>
-            <div class="stats-grid" style="margin-top: 48px;">
-                <div class="stat">
-                    <div class="stat-number">47</div>
-                    <div class="stat-label" data-en="Influencers Contacted" data-cn="联系的网红">Influencers Contacted</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">19</div>
-                    <div class="stat-label" data-en="Positive Responses" data-cn="积极回复">Positive Responses</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">12</div>
-                    <div class="stat-label" data-en="Secured Collabs" data-cn="达成合作">Secured Collabs</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">186K</div>
-                    <div class="stat-label" data-en="Total Reach" data-cn="总触达">Total Reach</div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+        <svg class="page-corner" width="44" height="44" viewBox="0 0 48 48"><path d="M48 0 L48 48 L0 48 Q16 44 28 32 Q40 20 48 0Z" fill="url(#corner-grad)"/><path d="M48 0 L48 48 L0 48 Q16 44 28 32 Q40 20 48 0Z" fill="url(#corner-shadow-grad)"/></svg>
+    </div>
+</div>
 
-    <!-- Pricing Section -->
-    <section id="pricing" class="section reveal">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-label" data-en="Pricing" data-cn="定价">Pricing</p>
-                <h2 class="section-title" data-en="Pay Only After Content is Posted" data-cn="只在内容发布后付费">Pay Only After Content is Posted</h2>
-            </div>
-            <div class="pricing-card">
-                <div class="pricing-highlight" data-en="Custom Pricing" data-cn="定制价格">Custom Pricing</div>
-                <h3 style="font-size: 28px; margin-bottom: 16px;" data-en="Tailored to Your Needs" data-cn="量身定制">Tailored to Your Needs</h3>
-                <p style="color: var(--text-secondary); margin-bottom: 32px; font-size: 18px; font-weight: 500;" data-en="Every brand is unique. We create custom packages based on:" data-cn="每个品牌都是独特的。我们基于以下因素创建定制方案：">
-                    Every brand is unique. We create custom packages based on:
-                </p>
-                <ul class="pricing-features">
-                    <li>
-                        <div class="check-icon"></div>
-                        <span data-en="Influencer tier and reach" data-cn="网红级别和影响力">Influencer tier and reach</span>
-                    </li>
-                    <li>
-                        <div class="check-icon"></div>
-                        <span data-en="Collaboration scope" data-cn="合作范围">Collaboration scope</span>
-                    </li>
-                    <li>
-                        <div class="check-icon"></div>
-                        <span data-en="Campaign volume" data-cn="推广规模">Campaign volume</span>
-                    </li>
-                </ul>
-                <div class="barter-section">
-                    <h4 data-en="Barter Partnerships Available" data-cn="可提供产品置换合作">Barter Partnerships Available</h4>
-                    <p data-en="We've secured hundreds of product-only collaborations with micro-influencers. Perfect for brands looking to maximize reach on limited budgets." data-cn="我们已经与微型网红达成了数百个仅产品置换的合作。非常适合希望在有限预算内最大化触达的品牌。">We've secured hundreds of product-only collaborations with micro-influencers. Perfect for brands looking to maximize reach on limited budgets.</p>
-                </div>
-                <p style="color: var(--text-muted); font-size: 16px; margin-bottom: 32px; font-weight: 500;" data-en="No setup fees. No monthly minimums. Cancel anytime." data-cn="无设置费。无月度最低消费。随时取消。">
-                    No setup fees. No monthly minimums. Cancel anytime.
-                </p>
-            </div>
-        </div>
-    </section>
+<footer><span class="footer-brand">DCG Media</span><span class="footer-text">© 2026 DCG Media. All rights reserved.</span></footer>
 
-    <!-- About Section -->
-    <section class="section reveal">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-label" data-en="About" data-cn="关于我们">About</p>
-                <h2 class="section-title" data-en="Built for Fashion Founders,<br>By Someone Who Gets It" data-cn="为时尚品牌创始人打造，<br>由懂你的人创建">Built for Fashion Founders,<br>By Someone Who Gets It</h2>
-                <div style="margin: 40px auto 40px; text-align: center;" class="reveal">
-                    <img src="https://i.imgur.com/52xlNt1.jpeg" alt="Xixi - Founder of DCG Media" class="founder-img" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); box-shadow: 0 0 30px var(--accent-glow);">
-                    <p style="margin-top: 16px; font-size: 18px; color: var(--accent); font-weight: 600;" data-en="Xixi, Founder" data-cn="Xixi，创始人">Xixi, Founder</p>
-                </div>
-                <div style="max-width: 700px; margin: 0 auto; text-align: center;">
-                    <p style="font-size: 20px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 24px; font-weight: 500;" data-en="I've sent over 10,000 outreach messages and learned what converts. I personally spent months in influencer DMs before systematizing the entire process. Now I help fashion founders skip the learning curve and get straight to results." data-cn="我发送了超过10,000条推广信息并学会了什么能转化。在创立工作室之前，我个人在网红私信中浪费了数月时间。后来我系统化了整个流程，现在帮助时尚品牌创始人跳过学习曲线，直接获得结果。">
-                        I've sent over 10,000 outreach messages and learned what converts. I personally spent months in influencer DMs before systematizing the entire process. Now I help fashion founders skip the learning curve and get straight to results.
-                    </p>
-                    <p style="font-size: 20px; line-height: 1.8; margin-bottom: 32px; font-weight: 500;">
-                        <strong data-en="The truth:" data-cn="事实是：">The truth:</strong> <span data-en="Influencer outreach isn't complex - it's just tedious. You have better things to do than follow up on DMs. That's where I come in." data-cn="网红推广并不复杂 - 只是繁琐。您有比跟进私信更重要的事情要做。这就是我的价值所在。">Influencer outreach isn't complex - it's just tedious. You have better things to do than follow up on DMs. That's where I come in.</span>
-                    </p>
-                    <p style="font-size: 26px; color: var(--accent); font-weight: 700;" data-en="Working with 23 fashion brands and counting." data-cn="正在与23个时尚品牌合作，持续增长中。">
-                        Working with 23 fashion brands and counting.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+<script>
+// Nav
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>40));
+const navToggle=document.getElementById('navToggle'),navLinks=document.getElementById('navLinks');
+navToggle.addEventListener('click',()=>navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>navLinks.classList.remove('open')));
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
 
-    <!-- FAQ Section -->
-    <section class="section reveal">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-label" data-en="FAQ" data-cn="常见问题">FAQ</p>
-                <h2 class="section-title" data-en="Common Questions" data-cn="常见问题">Common Questions</h2>
-            </div>
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span data-en="How do you select influencers?" data-cn="你们如何选择网红？">How do you select influencers?</span>
-                        <span class="faq-arrow">▼</span>
-                    </div>
-                    <div class="faq-answer" data-en="Based on your brief, we analyze engagement rates, audience demographics, content style, and brand alignment. Every suggestion is hand-picked, not scraped from databases." data-cn="根据您的简报，我们分析参与率、受众人口统计、内容风格和品牌契合度。每个建议都是精心挑选的，而不是从数据库中抓取的。">
-                        Based on your brief, we analyze engagement rates, audience demographics, content style, and brand alignment. Every suggestion is hand-picked, not scraped from databases.
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span data-en="What if the collaboration doesn't work out?" data-cn="如果合作不成功怎么办？">What if the collaboration doesn't work out?</span>
-                        <span class="faq-arrow">▼</span>
-                    </div>
-                    <div class="faq-answer" data-en="You only pay for completed posts. If products are sent but content isn't delivered, you don't pay." data-cn="您只为完成的发文付费。如果产品已发送但内容未发布，您无需付费。">
-                        You only pay for completed posts. If products are sent but content isn't delivered, you don't pay.
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span data-en="Can I review influencers before outreach?" data-cn="我可以在联系前审核网红吗？">Can I review influencers before outreach?</span>
-                        <span class="faq-arrow">▼</span>
-                    </div>
-                    <div class="faq-answer" data-en="Absolutely. We can work with your pre-approved list or send our recommendations for your approval first." data-cn="当然可以。我们可以使用您预先批准的名单，或先发送我们的推荐供您审核。">
-                        Absolutely. We can work with your pre-approved list or send our recommendations for your approval first.
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span data-en="Do you work with all fashion niches?" data-cn="你们与所有时尚细分领域合作吗？">Do you work with all fashion niches?</span>
-                        <span class="faq-arrow">▼</span>
-                    </div>
-                    <div class="faq-answer" data-en="Yes. Streetwear, sustainable fashion, luxury, accessories and more - we adapt our approach to your brand's specific style and market." data-cn="是的。街头品牌、时尚、奢侈品、配饰等 - 我们根据您品牌的特定风格和市场调整我们的合作方法。">
-                        Yes. Streetwear, sustainable fashion, luxury, accessories and more - we adapt our approach to your brand's specific style and market.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+// Reveal
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-    <!-- CTA Section -->
-    <section id="cta" class="section reveal">
-        <div class="container">
-            <div class="cta-section">
-                <div class="cta-content">
-                    <h2 class="cta-title" data-en="Let's Get Your Brand in Front of the Right Audience" data-cn="让您的品牌触达正确的受众">Let's Get Your Brand in Front of the Right Audience</h2>
-                    <p class="cta-description" data-en="No contracts. No retainers. Just results." data-cn="无合同。无预付款。只看结果。">
-                        No contracts. No retainers. Just results.
-                    </p>
-                    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-                        <a href="#testimonial" class="btn btn-secondary" data-en="See Sample Results" data-cn="查看案例结果">See Sample Results</a>
-                    </div>
-                    <p style="margin-top: 48px; font-style: italic; color: var(--text-secondary); font-size: 18px; font-weight: 500;" data-en="&quot;The best time to start influencer marketing was yesterday.<br>The second best time is now.&quot;" data-cn="&ldquo;开始网红营销的最佳时机是昨天。<br>第二好的时机是现在。&rdquo;">
-                        "The best time to start influencer marketing was yesterday.<br>The second best time is now."
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+// Voices — 3D book flip (left-center spine)
+let vIdx=0;
+const slides=document.querySelectorAll('.voice-slide');
+const vTotal=slides.length;
+const vDots=document.querySelectorAll('.voices-dot');
+const vTrack=document.getElementById('voicesTrack');
+let flipping=false;
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-links">
-                    <a href="mailto:xixi@dcgmediaglobal.com" class="footer-link" data-en="Email" data-cn="邮箱">Email</a>
-                    <a href="#" class="footer-link" data-en="LinkedIn" data-cn="领英">LinkedIn</a>
-                    <a href="#testimonial" class="footer-link" data-en="Case Studies" data-cn="案例研究">Case Studies</a>
-                </div>
-                <p class="copyright" data-en="© 2026 DCG Media. Proudly helping fashion brands grow." data-cn="© 2026 DCG Media. 自豪地帮助时尚品牌成长。">© 2026 DCG Media. Proudly helping fashion brands grow.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        let lastScroll = 0;
-
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
+function vGo(newIdx){
+    newIdx=((newIdx%vTotal)+vTotal)%vTotal;
+    if(newIdx===vIdx||flipping)return;
+    flipping=true;
+    // Phase 1: rotate to 90° (edge-on)
+    vTrack.style.transition='transform 0.25s ease-in';
+    vTrack.style.transform='rotateY(-90deg)';
+    function onHalf(e){
+        if(e.propertyName!=='transform')return;
+        vTrack.removeEventListener('transitionend',onHalf);
+        // Swap content at edge-on
+        slides[vIdx].classList.remove('active');
+        slides[newIdx].classList.add('active');
+        vIdx=newIdx;
+        vDots.forEach((d,j)=>d.classList.toggle('active',j===vIdx));
+        // Jump to opposite side instantly
+        vTrack.style.transition='none';
+        vTrack.style.transform='rotateY(90deg)';
+        requestAnimationFrame(()=>{requestAnimationFrame(()=>{
+            // Phase 2: rotate back to 0°
+            vTrack.style.transition='transform 0.25s ease-out';
+            vTrack.style.transform='rotateY(0deg)';
+            function onDone(e2){
+                if(e2.propertyName!=='transform')return;
+                vTrack.removeEventListener('transitionend',onDone);
+                flipping=false;
             }
-            
-            lastScroll = currentScroll;
-        });
+            vTrack.addEventListener('transitionend',onDone);
+        })});
+    }
+    vTrack.addEventListener('transitionend',onHalf);
+}
+document.getElementById('voicesPrev').addEventListener('click',()=>vGo(vIdx-1));
+document.getElementById('voicesNext').addEventListener('click',()=>vGo(vIdx+1));
+vDots.forEach(d=>d.addEventListener('click',()=>{const i=parseInt(d.dataset.i);if(i!==vIdx)vGo(i)}));
 
-        // FAQ functionality
-        const faqItems = document.querySelectorAll('.faq-question');
-        faqItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const parent = item.parentElement;
-                const isActive = parent.classList.contains('active');
-                
-                // Close all
-                document.querySelectorAll('.faq-item').forEach(faq => {
-                    faq.classList.remove('active');
-                });
-                
-                // Open clicked if it wasn't active
-                if (!isActive) {
-                    parent.classList.add('active');
-                }
-            });
-        });
+// Inquiry
+document.getElementById('btnBegin').addEventListener('click',()=>{document.getElementById('inquiryIntro').style.display='none';document.getElementById('formWrapper').classList.add('active')});
 
-        // Reveal on scroll
-        const reveals = document.querySelectorAll('.reveal');
-        const revealOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+// Form
+let currentStep=1;
+const sd={1:{l:'Step 1 of 3',p:'33%',w:'33%'},2:{l:'Step 2 of 3',p:'66%',w:'66%'},3:{l:'Step 3 of 3',p:'100%',w:'100%'}};
+function goToStep(s){document.getElementById('step'+currentStep).classList.remove('active');document.getElementById('step'+s).classList.add('active');currentStep=s;document.getElementById('progressLabel').textContent=sd[s].l;document.getElementById('progressPct').textContent=sd[s].p;document.getElementById('progressFill').style.width=sd[s].w}
+const FORMSPREE_ENDPOINT='https://formspree.io/f/xojgaaye';
+async function submitForm(){const brandEl=document.getElementById('brandUrl'),bu=brandEl.value.trim(),brandErr=document.getElementById('brandError'),nEl=document.getElementById('contactName'),n=nEl.value.trim(),eEl=document.getElementById('contactEmail'),e=eEl.value.trim(),pEl=document.getElementById('contactPhone'),p=pEl.value.trim(),err=document.getElementById('contactError');const urlOk=/^(https?:\/\/)?([\w-]+\.)+[a-z]{2,}(\/\S*)?$/i.test(bu);if(!urlOk){brandErr.textContent='Please enter a valid brand link (e.g. yourbrand.com).';brandErr.style.display='block';goToStep(1);brandEl.focus();return}brandErr.style.display='none';if(!n){nEl.focus();return}const emailOk=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);if(e&&!emailOk){err.textContent='Please enter a valid email address.';err.style.display='block';eEl.focus();return}const digits=(p.match(/\d/g)||[]).length,phoneOk=/^[\d\s()+.\-]+$/.test(p)&&digits>=6&&digits<=15;if(p&&!phoneOk){err.textContent='Please enter a valid phone number.';err.style.display='block';pEl.focus();return}if(!e&&!p){err.textContent='Please leave at least an email or a phone number.';err.style.display='block';return}err.style.display='none';const btn=document.querySelector('#step3 .btn-continue'),origLabel=btn.textContent,code=document.getElementById('phoneCode').textContent.trim(),fd=new FormData();fd.append('Brand URL',bu);fd.append('12-month vision',document.getElementById('brandVision').value.trim());fd.append('Name',n);fd.append('email',e);fd.append('Phone',p?code+' '+p:'');fd.append('_subject','New inquiry — DCG Media');btn.disabled=true;btn.textContent='Sending…';try{const res=await fetch(FORMSPREE_ENDPOINT,{method:'POST',headers:{'Accept':'application/json'},body:fd});if(!res.ok)throw new Error('HTTP '+res.status);document.getElementById('step3').classList.remove('active');document.querySelector('.form-progress-bar').style.display='none';document.getElementById('formThanks').classList.add('active')}catch(_){btn.disabled=false;btn.textContent=origLabel;err.textContent='Something went wrong sending your inquiry. Please try again in a moment, or reach out directly by email.';err.style.display='block'}}
 
-        const revealObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, revealOptions);
+// Q&A
+function toggleQA(btn){const item=btn.parentElement;if(item.classList.contains('open')){item.classList.remove('open')}else{document.querySelectorAll('.qa-item.open').forEach(o=>o.classList.remove('open'));item.classList.add('open')}}
 
-        reveals.forEach(reveal => {
-            revealObserver.observe(reveal);
-        });
+// Country codes
+const countries=[["🇦🇫","Afghanistan","+93"],["🇦🇱","Albania","+355"],["🇩🇿","Algeria","+213"],["🇦🇩","Andorra","+376"],["🇦🇴","Angola","+244"],["🇦🇬","Antigua and Barbuda","+1-268"],["🇦🇷","Argentina","+54"],["🇦🇲","Armenia","+374"],["🇦🇺","Australia","+61"],["🇦🇹","Austria","+43"],["🇦🇿","Azerbaijan","+994"],["🇧🇸","Bahamas","+1-242"],["🇧🇭","Bahrain","+973"],["🇧🇩","Bangladesh","+880"],["🇧🇧","Barbados","+1-246"],["🇧🇾","Belarus","+375"],["🇧🇪","Belgium","+32"],["🇧🇿","Belize","+501"],["🇧🇯","Benin","+229"],["🇧🇹","Bhutan","+975"],["🇧🇴","Bolivia","+591"],["🇧🇦","Bosnia and Herzegovina","+387"],["🇧🇼","Botswana","+267"],["🇧🇷","Brazil","+55"],["🇧🇳","Brunei","+673"],["🇧🇬","Bulgaria","+359"],["🇧🇫","Burkina Faso","+226"],["🇧🇮","Burundi","+257"],["🇰🇭","Cambodia","+855"],["🇨🇲","Cameroon","+237"],["🇨🇦","Canada","+1"],["🇨🇻","Cape Verde","+238"],["🇨🇫","Central African Republic","+236"],["🇹🇩","Chad","+235"],["🇨🇱","Chile","+56"],["🇨🇳","China","+86"],["🇨🇴","Colombia","+57"],["🇰🇲","Comoros","+269"],["🇨🇬","Congo","+242"],["🇨🇩","Congo (DRC)","+243"],["🇨🇷","Costa Rica","+506"],["🇭🇷","Croatia","+385"],["🇨🇺","Cuba","+53"],["🇨🇾","Cyprus","+357"],["🇨🇿","Czech Republic","+420"],["🇩🇰","Denmark","+45"],["🇩🇯","Djibouti","+253"],["🇩🇲","Dominica","+1-767"],["🇩🇴","Dominican Republic","+1-809"],["🇪🇨","Ecuador","+593"],["🇪🇬","Egypt","+20"],["🇸🇻","El Salvador","+503"],["🇬🇶","Equatorial Guinea","+240"],["🇪🇷","Eritrea","+291"],["🇪🇪","Estonia","+372"],["🇸🇿","Eswatini","+268"],["🇪🇹","Ethiopia","+251"],["🇫🇯","Fiji","+679"],["🇫🇮","Finland","+358"],["🇫🇷","France","+33"],["🇬🇦","Gabon","+241"],["🇬🇲","Gambia","+220"],["🇬🇪","Georgia","+995"],["🇩🇪","Germany","+49"],["🇬🇭","Ghana","+233"],["🇬🇷","Greece","+30"],["🇬🇩","Grenada","+1-473"],["🇬🇹","Guatemala","+502"],["🇬🇳","Guinea","+224"],["🇬🇼","Guinea-Bissau","+245"],["🇬🇾","Guyana","+592"],["🇭🇹","Haiti","+509"],["🇭🇳","Honduras","+504"],["🇭🇰","Hong Kong","+852"],["🇭🇺","Hungary","+36"],["🇮🇸","Iceland","+354"],["🇮🇳","India","+91"],["🇮🇩","Indonesia","+62"],["🇮🇷","Iran","+98"],["🇮🇶","Iraq","+964"],["🇮🇪","Ireland","+353"],["🇮🇱","Israel","+972"],["🇮🇹","Italy","+39"],["🇨🇮","Ivory Coast","+225"],["🇯🇲","Jamaica","+1-876"],["🇯🇵","Japan","+81"],["🇯🇴","Jordan","+962"],["🇰🇿","Kazakhstan","+7"],["🇰🇪","Kenya","+254"],["🇰🇮","Kiribati","+686"],["🇰🇼","Kuwait","+965"],["🇰🇬","Kyrgyzstan","+996"],["🇱🇦","Laos","+856"],["🇱🇻","Latvia","+371"],["🇱🇧","Lebanon","+961"],["🇱🇸","Lesotho","+266"],["🇱🇷","Liberia","+231"],["🇱🇾","Libya","+218"],["🇱🇮","Liechtenstein","+423"],["🇱🇹","Lithuania","+370"],["🇱🇺","Luxembourg","+352"],["🇲🇴","Macau","+853"],["🇲🇬","Madagascar","+261"],["🇲🇼","Malawi","+265"],["🇲🇾","Malaysia","+60"],["🇲🇻","Maldives","+960"],["🇲🇱","Mali","+223"],["🇲🇹","Malta","+356"],["🇲🇭","Marshall Islands","+692"],["🇲🇷","Mauritania","+222"],["🇲🇺","Mauritius","+230"],["🇲🇽","Mexico","+52"],["🇫🇲","Micronesia","+691"],["🇲🇩","Moldova","+373"],["🇲🇨","Monaco","+377"],["🇲🇳","Mongolia","+976"],["🇲🇪","Montenegro","+382"],["🇲🇦","Morocco","+212"],["🇲🇿","Mozambique","+258"],["🇲🇲","Myanmar","+95"],["🇳🇦","Namibia","+264"],["🇳🇷","Nauru","+674"],["🇳🇵","Nepal","+977"],["🇳🇱","Netherlands","+31"],["🇳🇿","New Zealand","+64"],["🇳🇮","Nicaragua","+505"],["🇳🇪","Niger","+227"],["🇳🇬","Nigeria","+234"],["🇰🇵","North Korea","+850"],["🇲🇰","North Macedonia","+389"],["🇳🇴","Norway","+47"],["🇴🇲","Oman","+968"],["🇵🇰","Pakistan","+92"],["🇵🇼","Palau","+680"],["🇵🇸","Palestine","+970"],["🇵🇦","Panama","+507"],["🇵🇬","Papua New Guinea","+675"],["🇵🇾","Paraguay","+595"],["🇵🇪","Peru","+51"],["🇵🇭","Philippines","+63"],["🇵🇱","Poland","+48"],["🇵🇹","Portugal","+351"],["🇶🇦","Qatar","+974"],["🇷🇴","Romania","+40"],["🇷🇺","Russia","+7"],["🇷🇼","Rwanda","+250"],["🇰🇳","Saint Kitts and Nevis","+1-869"],["🇱🇨","Saint Lucia","+1-758"],["🇻🇨","Saint Vincent","+1-784"],["🇼🇸","Samoa","+685"],["🇸🇲","San Marino","+378"],["🇸🇹","Sao Tome and Principe","+239"],["🇸🇦","Saudi Arabia","+966"],["🇸🇳","Senegal","+221"],["🇷🇸","Serbia","+381"],["🇸🇨","Seychelles","+248"],["🇸🇱","Sierra Leone","+232"],["🇸🇬","Singapore","+65"],["🇸🇰","Slovakia","+421"],["🇸🇮","Slovenia","+386"],["🇸🇧","Solomon Islands","+677"],["🇸🇴","Somalia","+252"],["🇿🇦","South Africa","+27"],["🇰🇷","South Korea","+82"],["🇸🇸","South Sudan","+211"],["🇪🇸","Spain","+34"],["🇱🇰","Sri Lanka","+94"],["🇸🇩","Sudan","+249"],["🇸🇷","Suriname","+597"],["🇸🇪","Sweden","+46"],["🇨🇭","Switzerland","+41"],["🇸🇾","Syria","+963"],["🇹🇼","Taiwan","+886"],["🇹🇯","Tajikistan","+992"],["🇹🇿","Tanzania","+255"],["🇹🇭","Thailand","+66"],["🇹🇱","Timor-Leste","+670"],["🇹🇬","Togo","+228"],["🇹🇴","Tonga","+676"],["🇹🇹","Trinidad and Tobago","+1-868"],["🇹🇳","Tunisia","+216"],["🇹🇷","Turkey","+90"],["🇹🇲","Turkmenistan","+993"],["🇹🇻","Tuvalu","+688"],["🇺🇬","Uganda","+256"],["🇺🇦","Ukraine","+380"],["🇦🇪","United Arab Emirates","+971"],["🇬🇧","United Kingdom","+44"],["🇺🇸","United States","+1"],["🇺🇾","Uruguay","+598"],["🇺🇿","Uzbekistan","+998"],["🇻🇺","Vanuatu","+678"],["🇻🇦","Vatican City","+379"],["🇻🇪","Venezuela","+58"],["🇻🇳","Vietnam","+84"],["🇾🇪","Yemen","+967"],["🇿🇲","Zambia","+260"],["🇿🇼","Zimbabwe","+263"]];
+const pcBtn=document.getElementById('phoneCountryBtn'),cDD=document.getElementById('countryDropdown'),cList=document.getElementById('countryList'),cSearch=document.getElementById('countrySearch');
+function renderC(f){const q=(f||'').toLowerCase();cList.innerHTML='';countries.forEach(c=>{if(q&&!c[1].toLowerCase().includes(q)&&!c[2].includes(q))return;const li=document.createElement('li');li.innerHTML=c[0]+' '+c[1]+'<span class="c-code">'+c[2]+'</span>';li.addEventListener('click',()=>{document.getElementById('phoneFlag').textContent=c[0];document.getElementById('phoneCode').textContent=c[2];cDD.classList.remove('open');cSearch.value=''});cList.appendChild(li)})}
+pcBtn.addEventListener('click',e=>{e.stopPropagation();cDD.classList.toggle('open');if(cDD.classList.contains('open')){renderC('');setTimeout(()=>cSearch.focus(),50)}});
+cSearch.addEventListener('input',()=>renderC(cSearch.value));
+document.addEventListener('click',e=>{if(!document.getElementById('phoneField').contains(e.target))cDD.classList.remove('open')});
 
-        // Language switching
-        let currentLang = 'en';
-        const langButtons = document.querySelectorAll('.lang-switch');
-
-        function toggleLanguage() {
-            currentLang = currentLang === 'en' ? 'cn' : 'en';
-            langButtons.forEach(btn => {
-                btn.textContent = currentLang === 'en' ? '中文' : 'EN';
-            });
-
-            // Update all elements with data attributes
-            document.querySelectorAll('[data-en][data-cn]').forEach(element => {
-                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                    element.placeholder = element.getAttribute(`data-${currentLang}`);
-                } else {
-                    // Use innerHTML instead of textContent to preserve HTML tags like <br>
-                    element.innerHTML = element.getAttribute(`data-${currentLang}`);
-                }
-            });
-
-            // Update WhatsApp links
-            document.querySelectorAll('.whatsapp-btn').forEach(btn => {
-                const link = btn.getAttribute(`data-${currentLang}-link`);
-                if (link) {
-                    btn.href = link;
-                }
-            });
-        }
-
-        // Parallax effect on hero gradient
-        const heroGradient = document.querySelector('.hero-gradient');
-        document.addEventListener('mousemove', (e) => {
-            const x = (e.clientX / window.innerWidth - 0.5) * 20;
-            const y = (e.clientY / window.innerHeight - 0.5) * 20;
-            heroGradient.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
-        });
-    </script>
+// Inquiry gallery
+let gIdx=0;
+const gSlides=document.querySelectorAll('.inquiry-gallery-slide');
+const gDots=document.querySelectorAll('.inquiry-gallery-dot');
+function gallerySet(i){if(i===gIdx)return;gSlides[gIdx].classList.remove('active');gSlides[i].classList.add('active');gDots[gIdx].classList.remove('active');gDots[i].classList.add('active');gIdx=i}
+function galleryGo(d){gallerySet(((gIdx+d)%gSlides.length+gSlides.length)%gSlides.length)}
+</script>
 </body>
 </html>
